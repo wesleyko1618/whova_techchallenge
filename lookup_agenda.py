@@ -25,16 +25,16 @@ agenda = db_table("agenda", {
 listofcol = ['date', 'time_start', 'time_end', 'title', 'location', 'description', 'speaker']
 
 if (len(sys.argv) != 3):
-    print("Please only enter a colunn title and a value to search for")
+    print("Please only enter a colunn title and a value to search for (use " " when entering a string with spaces in it)")
     exit()
 
 # inputs of column title and the value we are searching for
-#col = sys.argv[1]
-#val = sys.argv[2]
+col = sys.argv[1]
+val = sys.argv[2]
 
 #testing without sys.argv
-col = "date"
-val = "6/16/2018" 
+# col = "date"
+# val = "6/16/2018" 
 
 if col not in listofcol:
     print("Please give a valid column title: 'date', 'time_start', 'time_end', 'title', 'location', 'description', or 'speaker'")
