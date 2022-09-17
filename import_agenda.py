@@ -3,16 +3,23 @@ import sqlite3
 import pandas as pd
 import sys
 
-# using lookup columns for table schema columns {date, time_start, time_end, title, location, description, speaker}
+# using lookup columns for table schema columns {date, time_start, time_end, title, location, description, speaker} and adding the others
 
-#Need to check for if they don't give a argv
-excelfile = sys.argv[1]                                                       # take input of excel sheet
-
-if not excelfile.lower().endswith('.xls'):                                # make sure it's an excel file 
-    print('Please enter a valid Excel file')
+# Need to check for if they don't give a argv
+if (len(sys.argv) != 2):
+    print("Please enter a single Excel file")
     exit()
 
-dfs = pd.read_excel(excelfile, sheet_name="Agenda", header=14)            # get's all the data into a dataframe
+# take input of excel sheet
+excelfile = sys.argv[1]   
+
+# make sure it's an excel file 
+if not excelfile.lower().endswith('.xls'):    
+    print('Please enter a valid Excel file with the .xls file type')
+    exit()
+
+# get's all the data into a dataframe
+dfs = pd.read_excel(excelfile, sheet_name="Agenda", header=14)           
 
 #create a SQLite datatable with db_table with this schema
 agenda = db_table("agenda", { 
